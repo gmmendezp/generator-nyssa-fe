@@ -1,15 +1,14 @@
 import React, { Component } from 'react'
+import Radium, { keyframes } from 'radium'
 import logo from './../../assets/logo.svg'
-import { style, keyframes } from 'typestyle'
-import { px, gray, white } from 'csx'
 
-class Home extends Component {
-  classNames = {
-    global: style({
+export class Home extends Component {
+  styles = {
+    base: {
       textAlign: 'center'
-    }),
-    logo: style({
-      height: px(80),
+    },
+    logo: {
+      height: '80px',
       animationName: keyframes({
         from: { transform: 'rotate(0deg)' },
         to: { transform: 'rotate(360deg)' }
@@ -17,25 +16,26 @@ class Home extends Component {
       animationDuration: '20s',
       animationIterationCount: 'infinite',
       animationTimingFunction: 'linear'
-    }),
-    header: style({
-      backgroundColor: gray.darken(0.37).toHexString(),
-      height: px(190),
-      padding: px(20),
-      color: white.toHexString()
-    }),
-    intro: style({
+    },
+    header: {
+      backgroundColor: '#222',
+      height: '190px',
+      padding: '20px',
+      color: '#fff'
+    },
+    intro: {
       fontSize: 'large'
-    })
+    }
   }
+
   render () {
     return (
-      <div className={this.classNames.global}>
-        <div className={this.classNames.header}>
-          <img src={logo} className={this.classNames.logo} alt='logo' />
+      <div style={this.styles.base}>
+        <div style={this.styles.header}>
+          <img src={logo} style={this.styles.logo} alt='logo' />
           <h2>Welcome to React</h2>
         </div>
-        <p className={this.classNames.intro}>
+        <p style={this.styles.intro}>
           Just a home page
         </p>
       </div>
@@ -43,4 +43,4 @@ class Home extends Component {
   }
 }
 
-export default Home
+export default Radium(Home)
