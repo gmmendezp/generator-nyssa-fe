@@ -1,0 +1,30 @@
+{
+  "name": "generator-nyssa-fe",
+  "version": "0.0.4",
+  "description": "Front End yeoman generator for nyssa",
+  "main": "index.js",
+  "files": [
+    "generators/app",
+    "generators/component"
+  ],
+  "keywords": [
+    "yeoman-generator"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@gitlab.com/gmmendezp/generator-nyssa-fe.git"
+  },
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://gitlab.com/gmmendezp/generator-nyssa-fe/issues"
+  },
+  "homepage": "https://gitlab.com/gmmendezp/generator-nyssa-fe#README",
+  "dependencies": {
+    "yeoman-generator": "^1.1.1"
+  },
+  "devDependencies": {
+    "snazzy": "^7.0.0",
+    "standard": "^10.0.2"
+  }
+}
