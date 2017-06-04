@@ -12,12 +12,12 @@ module.exports = class extends Generator {
       type: 'input',
       name: 'name',
       message: 'Your action name',
-      default: 'newAction'
+      default: 'MyAction'
     }, {
       type: 'input',
       name: 'path',
       message: 'Path to use relative to the src folder',
-      default: 'modules/home'
+      default: 'actions'
     }]).then(answers => {
       this.promptOptions = answers
     })

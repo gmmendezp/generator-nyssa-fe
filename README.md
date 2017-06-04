@@ -18,13 +18,11 @@ To generate a new project:
 yo nyssa-fe
 ```
 
-##### Options:
+##### Prompts:
 
-- `--skip-install`
-  Skips the automatic execution of `bower` and `npm` after scaffolding has finished.
-- `--name=<project-name>`
+- `name`
   Name for the generated project. The default value is `ReactTest`.
-- `--path=<project-path>`
+- `path`
   Relative path were the project will be generated, the generator will create the folders as needed. The default value is the current folder.
 
 ### Component
@@ -35,12 +33,14 @@ To generate a new component:
 yo nyssa-fe:component
 ```
 
-##### Options:
+##### Prompts:
 
-- `--name=<component-name>`
-  Name for the generated component. The default value is `Component`. If the name has slashes it will use it as the whole path for the component.
-- `--container`
-  Flag to determine if the generated component should be a redux container.
+- `--name`
+  Name for the generated component. The default value is `MyComponent`. If the name has slashes it will use it as the whole path for the component.
+- `module`
+  Name of the parent module for the component. Default value is `misc`.
+- `container`
+  Flag to determine if the generated component should be a redux container. Default value is `false`.
 
 ### Action
 
@@ -50,12 +50,12 @@ To generate a new action:
 yo nyssa-fe:action
 ```
 
-##### Options:
+##### Prompts:
 
-- `--path=<path>`
-  Path to the folder where the action should be stored. The file will take the name of the folder plus the actions suffix. If the file doesn't exist it will create it
-- `--name=<action-name>`
-  Name for the generated action. The default value is `newAction`.
+- `name`
+  Name for the generated action. The default value is `MyAction`.
+- `path`
+  Path to the folder where the action should be stored. The file will take the name of the folder plus the actions suffix. If the file doesn't exist it will create it. Default value is `actions`.
 
 ### Reducer
 
@@ -65,9 +65,24 @@ To generate a new reducer:
 yo nyssa-fe:reducer
 ```
 
-##### Options:
+##### Prompts:
 
-- `--path=<path>`
-  Path to the folder where the action should be stored. The file will take the name of the folder plus the reducer suffix.
-- `--name=<reducer-name>`
-  Name for the generated reducer, to use in the combine reducers file. The default value will take the last section of the path.
+- `name`
+  Name for the generated reducer, to use in the combine reducers file. The default value will take the last section of the path. Default value is `MyReducer`.
+- `path`
+  Path to the folder where the reducer should be stored. The file will use the name and the `reducer` suffix. Default value is `reducers`.
+
+### Epic (redux-observable)
+
+To generate a new epic:
+
+```bash
+yo nyssa-fe:epic
+```
+
+##### Prompts:
+
+- `name`
+  Name for the generated epic, to use in the combine epic file. Default value is `MyEpic`.
+- `path`
+  Path to the folder where the epic should be stored. The file will use the name and the `epic` suffix. Default value is `epics`.
