@@ -1,15 +1,10 @@
-import React, { Component } from 'react'
-import Radium from 'radium'<% if (container){%>
+import React, { Component } from 'react'<% if (container){%>
 import { connect } from 'react-redux'<% } %>
 
-export class <%= name %> extends Component {
-  styles = {
-    base: {}
-  }
-
+class <%= name %> extends Component {
   render () {
     return (
-      <div style={this.styles.base}>
+      <div className='<%= name %>'>
         <%= name %>
       </div>
     )
@@ -20,4 +15,4 @@ const mapStateToProps = state => {
   return {}
 }
 
-export default connect(mapStateToProps)(Radium(<%= name %>))<% } else {%>export default Radium(<%= name %>)<% }%>
+export default connect(mapStateToProps)(<%= name %>)<% } else {%>export default <%= name %><% }%>

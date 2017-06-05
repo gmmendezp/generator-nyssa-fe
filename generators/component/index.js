@@ -34,10 +34,9 @@ module.exports = class extends Generator {
     let slashIndex = name.lastIndexOf('/')
     let pathPrefix = name.slice(0, slashIndex > -1 ? slashIndex : 0)
     let componentName = name.slice(slashIndex + 1)
-    componentName = name[0].toUpperCase() + name.slice(1)
     files.forEach(file => this.fs.copyTpl(
       this.templatePath(file),
-      this.destinationPath(`src/modules/${module}/${pathPrefix}/${componentName.toLowerCase()}/${file.replace('Component', componentName)}`),
+      this.destinationPath(`src/modules/${module}/${pathPrefix}/${componentName}/${file.replace('Component', componentName)}`),
       { name: componentName, container }
     ))
   }

@@ -13,7 +13,7 @@ module.exports = class extends Generator {
       type: 'input',
       name: 'path',
       message: 'Path to use relative to the current folder',
-      default: 'ReactTest'
+      default: '.'
     }]).then(answers => {
       this.promptOptions = answers
     })
