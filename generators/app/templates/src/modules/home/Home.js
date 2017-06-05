@@ -1,15 +1,15 @@
 import React, { Component } from 'react'
 import logo from './../../assets/logo.svg'
 import { style, keyframes } from 'typestyle'
-import { px, gray, white } from 'csx'
+import { gray, white } from 'csx'
 
 class Home extends Component {
   classNames = {
-    global: style({
+    base: style({
       textAlign: 'center'
     }),
     logo: style({
-      height: px(80),
+      height: '80px',
       animationName: keyframes({
         from: { transform: 'rotate(0deg)' },
         to: { transform: 'rotate(360deg)' }
@@ -20,17 +20,18 @@ class Home extends Component {
     }),
     header: style({
       backgroundColor: gray.darken(0.37).toHexString(),
-      height: px(190),
-      padding: px(20),
+      height: '190px',
+      padding: '20px',
       color: white.toHexString()
     }),
     intro: style({
       fontSize: 'large'
     })
   }
+
   render () {
     return (
-      <div className={this.classNames.global}>
+      <div className={this.classNames.base}>
         <div className={this.classNames.header}>
           <img src={logo} className={this.classNames.logo} alt='logo' />
           <h2>Welcome to React</h2>

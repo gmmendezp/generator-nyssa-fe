@@ -1,10 +1,15 @@
-import React, { Component } from 'react'<% if (container){%>
+import React, { Component } from 'react'
+import { style } from 'typestyle'<% if (container){%>
 import { connect } from 'react-redux'<% } %>
 
-class <%= name %> extends Component {
+export class <%= name %> extends Component {
+  classNames = {
+    base: style({})
+  }
+
   render () {
     return (
-      <div className='<%= name %>'>
+      <div className={this.classNames.base}>
         <%= name %>
       </div>
     )
