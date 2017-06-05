@@ -23,5 +23,6 @@ module.exports = class extends Generator {
     let path = this.promptOptions.path
     let name = this.promptOptions.name
     this.fs.copyTpl(this.templatePath(), this.destinationPath(path), { name })
+    this.fs.copyTpl(this.templatePath('.*'), this.destinationRoot(), { name })
   }
 }
