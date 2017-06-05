@@ -30,7 +30,7 @@ module.exports = class extends Generator {
     const path = `src/${this.promptOptions.path}/${fileName}`
     const reducersPath = this.destinationPath('src/rootReducer.js')
 
-    const newImport = `import ${name}Reducer from '${path}'`
+    const newImport = `import ${name}Reducer from '${path.replace('src/', './')}'`
     const importLine = newImport.replace(/\s/g, '')
     const newData = `  ${name}: ${name}Reducer`
     const dataLine = newData.replace(/\s/g, '')
