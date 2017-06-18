@@ -8,17 +8,20 @@ const fileTemplate = 'actions.js'
 
 module.exports = class extends Generator {
   prompting () {
-    return this.prompt([{
-      type: 'input',
-      name: 'name',
-      message: 'Your action name',
-      default: 'MyAction'
-    }, {
-      type: 'input',
-      name: 'path',
-      message: 'Path to use relative to the src folder',
-      default: 'actions'
-    }]).then(answers => {
+    return this.prompt([
+      {
+        type: 'input',
+        name: 'name',
+        message: 'Your action name',
+        default: 'MyAction'
+      },
+      {
+        type: 'input',
+        name: 'path',
+        message: 'Path to use relative to the src folder',
+        default: 'actions'
+      }
+    ]).then(answers => {
       this.promptOptions = answers
     })
   }
@@ -44,7 +47,9 @@ module.exports = class extends Generator {
 
         rl.on('line', line => {
           let testLine = line.replace(/\s/g, '')
-          let newLine = newData.slice(0, newData.search(/\n/)).replace(/\s/g, '')
+          let newLine = newData
+            .slice(0, newData.search(/\n/))
+            .replace(/\s/g, '')
           foundExport |= testLine === newLine
           data.push(line)
         })
@@ -58,20 +63,29 @@ module.exports = class extends Generator {
           }
           stream.end()
           stream.on('finish', () => {
-            standard.lintFiles(fileName, {
-              fix: true,
-              cwd: this.destinationRoot()
-            },
-            err => err ? console.error(err) : '')
+            standard.lintFiles(
+              fileName,
+              {
+                fix: true,
+                cwd: this.destinationRoot()
+              },
+              err => (err ? console.error(err) : '')
+            )
           })
         })
       })
     }
 
-    fs.access(path, err => err ? this.fs.copyTpl(
-      this.templatePath(fileTemplate),
-      this.destinationPath(path),
-      { name }
-    ) : updateFile())
+    fs.access(
+      path,
+      err =>
+        err
+          ? this.fs.copyTpl(
+              this.templatePath(fileTemplate),
+              this.destinationPath(path),
+              { name }
+            )
+          : updateFile()
+    )
   }
 }

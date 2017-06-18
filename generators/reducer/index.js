@@ -5,21 +5,27 @@ const readline = require('readline')
 const standard = require('standard')
 
 const fileTemplate = 'reducer.js'
-const combineReducersLine = 'const rootReducer = combineReducers({'.replace(/\s/g, '')
+const combineReducersLine = 'const rootReducer = combineReducers({'.replace(
+  /\s/g,
+  ''
+)
 
 module.exports = class extends Generator {
   prompting () {
-    return this.prompt([{
-      type: 'input',
-      name: 'name',
-      message: 'Your reducer name',
-      default: 'MyReducer'
-    }, {
-      type: 'input',
-      name: 'path',
-      message: 'Path to use relative to the src folder',
-      default: 'reducers'
-    }]).then(answers => {
+    return this.prompt([
+      {
+        type: 'input',
+        name: 'name',
+        message: 'Your reducer name',
+        default: 'MyReducer'
+      },
+      {
+        type: 'input',
+        name: 'path',
+        message: 'Path to use relative to the src folder',
+        default: 'reducers'
+      }
+    ]).then(answers => {
       this.promptOptions = answers
     })
   }
@@ -30,7 +36,10 @@ module.exports = class extends Generator {
     const path = `src/${this.promptOptions.path}/${fileName}`
     const reducersPath = this.destinationPath('src/rootReducer.js')
 
-    const newImport = `import ${name}Reducer from '${path.replace('src/', './')}'`
+    const newImport = `import ${name}Reducer from '${path.replace(
+      'src/',
+      './'
+    )}'`
     const importLine = newImport.replace(/\s/g, '')
     const newData = `  ${name}: ${name}Reducer`
     const dataLine = newData.replace(/\s/g, '')
@@ -77,11 +86,14 @@ module.exports = class extends Generator {
           this.templatePath(fileTemplate),
           this.destinationPath(path)
         )
-        standard.lintFiles(fileName, {
-          fix: true,
-          cwd: this.destinationRoot()
-        },
-        err => err ? console.error(err) : '')
+        standard.lintFiles(
+          fileName,
+          {
+            fix: true,
+            cwd: this.destinationRoot()
+          },
+          err => (err ? console.error(err) : '')
+        )
       })
     })
   }

@@ -2,26 +2,33 @@
 const Generator = require('yeoman-generator')
 const fs = require('fs')
 const readline = require('readline')
-const standard = require('standard')
 
 const fileTemplate = 'epic.js'
 const combineEpicsLine = 'const rootEpic = combineEpics('.replace(/\s/g, '')
-const singleLineEpicsLineEmpty = 'const rootEpic = combineEpics()'.replace(/\s/g, '')
-const singleLineEpicsLineRegex = new RegExp('const rootEpic = combineEpics(.+)'.replace(/\s/g, ''))
+const singleLineEpicsLineEmpty = 'const rootEpic = combineEpics()'.replace(
+  /\s/g,
+  ''
+)
+const singleLineEpicsLineRegex = new RegExp(
+  'const rootEpic = combineEpics(.+)'.replace(/\s/g, '')
+)
 
 module.exports = class extends Generator {
   prompting () {
-    return this.prompt([{
-      type: 'input',
-      name: 'name',
-      message: 'Your epic name',
-      default: 'MyEpic'
-    }, {
-      type: 'input',
-      name: 'path',
-      message: 'Path to use relative to the src folder',
-      default: 'epics'
-    }]).then(answers => {
+    return this.prompt([
+      {
+        type: 'input',
+        name: 'name',
+        message: 'Your epic name',
+        default: 'MyEpic'
+      },
+      {
+        type: 'input',
+        name: 'path',
+        message: 'Path to use relative to the src folder',
+        default: 'epics'
+      }
+    ]).then(answers => {
       this.promptOptions = answers
     })
   }
@@ -78,7 +85,9 @@ module.exports = class extends Generator {
         if (!foundImport) {
           data.splice(-1, 0, newImport)
         }
-        data.push(`${line.slice(0, line.length - 1)}, ${newData.replace(/ /g, '')})`)
+        data.push(
+          `${line.slice(0, line.length - 1)}, ${newData.replace(/ /g, '')})`
+        )
       } else {
         data.push(line)
       }

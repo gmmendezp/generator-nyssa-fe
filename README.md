@@ -22,8 +22,6 @@ yo nyssa-fe
 
 - `name`
   Name for the generated project. The default value is `ReactTest`.
-- `path`
-  Relative path were the project will be generated, the generator will create the folders as needed. The default value is `.` (Current folder).
 
 ### Component
 
