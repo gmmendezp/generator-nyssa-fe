@@ -1,6 +1,6 @@
 {
   "name": "generator-nyssa-fe",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "description": "Front End yeoman generator for nyssa",
   "main": "index.js",
   "files": [
