@@ -1,5 +1,9 @@
 # Nyssa FE Generator
 
+This project uses [create-react-app](https://github.com/facebookincubator/create-react-app) as base. With a few additions like [Redux](http://redux.js.org/), [redux-observable](https://redux-observable.js.org/), [react-router](https://github.com/ReactTraining/react-router), [typestyle](https://github.com/typestyle/typestyle), [rimraf](https://github.com/isaacs/rimraf), [standard](https://standardjs.com/) and [prettier](https://github.com/prettier/prettier).
+
+NOTE: It also adds prettier as a precommit hook with [lint-staged](https://github.com/okonet/lint-staged) and [husky](https://github.com/typicode/husky).
+
 ## Usage
 
 First, install [Yeoman](http://yeoman.io) and generator-nyssa-fe using [npm](https://www.npmjs.com/) (we assume you have pre-installed [node.js](https://nodejs.org/)).
