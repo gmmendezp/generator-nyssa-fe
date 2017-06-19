@@ -1,11 +1,14 @@
 {
   "name": "generator-nyssa-fe",
-  "version": "0.0.6",
+  "version": "0.0.7",
   "description": "Front End yeoman generator for nyssa",
   "main": "index.js",
   "files": [
     "generators/app",
-    "generators/component"
+    "generators/component",
+    "generators/action",
+    "generators/epic",
+    "generators/reducer"
   ],
   "keywords": [
     "yeoman-generator"
