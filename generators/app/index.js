@@ -22,6 +22,6 @@ module.exports = class extends Generator {
   }
 
   install () {
-    return this.npmInstall()
+    this.npmInstall()
   }
 }
