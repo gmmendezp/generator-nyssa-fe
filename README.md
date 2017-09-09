@@ -88,3 +88,18 @@ yo nyssa-fe:epic
   Name for the generated epic, to use in the combine epic file. Default value is `MyEpic`.
 - `path`
   Path to the folder where the epic should be stored. The file will use the name and the `epic` suffix. Default value is `epics`.
+
+### Form
+
+To generate a new Form:
+
+```bash
+yo nyssa-fe:Form
+```
+
+##### Prompts:
+
+- `name`
+  Name for the generated Form. The default value is `MyForm`.
+- `module`
+  Name of the parent module for the form. Default value is `misc`.

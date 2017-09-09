@@ -3,13 +3,16 @@ import { style } from 'typestyle'<% if (container){%>
 import { connect } from 'react-redux'<% } %>
 
 export class <%= name %> extends Component {
-  classNames = {
-    base: style({})
+  constructor () {
+    super()
+    this.styles = {
+      base: {}
+    }
   }
 
   render () {
     return (
-      <div className={this.classNames.base}>
+      <div className={style(this.styles.base, this.props.styles.base)}>
         <%= name %>
       </div>
     )
