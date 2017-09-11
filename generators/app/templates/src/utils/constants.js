@@ -6,8 +6,7 @@ export const CSS = {
   BREAKPOINT_LARGE: 1000,
   BREAKPOINT_XLARGE: 1200,
   APP_MAX_WIDTH: '1200px',
-  FONT_PRIMARY: 'Raleway, Helvetica, sans-serif',
-  FONT_SPECIAL: "'Arima Madurai', cursive",
+  FONT_PRIMARY: 'Roboto, sans-serif',
   TEXT_COLOR_PRIMARY: '#333',
   TEXT_COLOR_SECONDARY: '#ccc',
   TEXT_COLOR_TERTIARY: color('#ccc')

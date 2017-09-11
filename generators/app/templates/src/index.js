@@ -18,8 +18,7 @@ setupPage('#root')
 
 cssRule('body', {
   fontFamily: CSS.FONT_PRIMARY,
-  backgroundColor: CSS.BG_COLOR_PRIMARY,
-  letterSpacing: '0.08em'
+  backgroundColor: CSS.BG_COLOR_PRIMARY
 })
 
 ReactDOM.render(
