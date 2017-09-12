@@ -2,16 +2,12 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import { Provider } from 'react-redux'
 import { normalize, setupPage } from 'csstips'
-import { cssRaw, cssRule } from 'typestyle'
+import { cssRule } from 'typestyle'
 
 import { CSS } from './utils/constants'
 import Router from './router'
 import registerServiceWorker from './registerServiceWorker'
 import configureStore from './configureStore'
-
-cssRaw(`
-  @import url('https://fonts.googleapis.com/css?family=Roboto:300,400,500');
-`)
 
 normalize()
 setupPage('#root')
@@ -21,11 +17,26 @@ cssRule('body', {
   backgroundColor: CSS.BG_COLOR_PRIMARY
 })
 
-ReactDOM.render(
-  <Provider store={configureStore()}>
-    <Router />
-  </Provider>,
-  document.getElementById('root')
-)
+function renderApp () {
+  let store = configureStore()
+  ReactDOM.render(
+    <Provider store={store}>
+      <Router />
+    </Provider>,
+    document.getElementById('root')
+  )
 
-registerServiceWorker()
+  registerServiceWorker(store)
+}
+
+if (!global.Intl) {
+  console.log(1)
+  const locale =
+    window.navigator.userLanguage || window.navigator.language || 'en-US'
+  Promise.all([
+    require('intl'),
+    require(`intl/locale-data/jsonp/${locale}`)
+  ]).then(() => renderApp())
+} else {
+  renderApp()
+}

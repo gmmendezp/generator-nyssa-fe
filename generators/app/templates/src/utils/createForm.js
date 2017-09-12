@@ -1,24 +1,27 @@
 import React, { Component } from 'react'
 import { Field, reduxForm } from 'redux-form'
 import { style } from 'typestyle'
-import { CSS } from './constants'
 import { FIELD_NAME, FIELD_TYPE, FIELD_COMPONENTS } from './form'
-import Button from 'material-ui/Button'
+import Button from 'react-md/lib/Buttons/Button'
 
 /**
- * Create a form the following way: createForm(fields, options)
- * Fields should have the following format:
- * {
- *   name: 'string',
- *   label: 'string',
- *   field: <field type from FIELD_TYPE enum>,
- *   validate: <validation object list>
- *   ...
- * }
+ * Create a form the following way: createForm(options)
  * Options should have the followgin format:
  * {
+ *   fields: [{
+ *     name: 'string',
+ *     label: 'string',
+ *     field: <field type from FIELD_TYPE enum>,
+ *     validate: <validation object list>
+ *     ...
+ *   }],
  *   formName: 'string',
- *   buttonProps: {} // Look for material-ui docs for props
+ *   submitButton: {
+ *     text: 'Submit',
+ *     props: {
+ *       raised: true
+ *     }
+ *   }, // Look for react-md docs for props
  * }
  */
 
@@ -35,8 +38,7 @@ const getRenderField = () => {
     let otherProps = Object.assign(
       {},
       {
-        type: fieldType,
-        className: style(this.styles.input)
+        type: fieldType
       },
       other
     )
@@ -44,7 +46,7 @@ const getRenderField = () => {
       otherProps.label = label
     }
     if (touched && error) {
-      otherProps.helperText = error
+      otherProps.errorText = error
       otherProps.error = true
     }
     return (
@@ -56,26 +58,38 @@ const getRenderField = () => {
   }
 }
 
-const createForm = (fields, { formName, buttonProps }) => {
+const createForm = ({
+  fields,
+  styles,
+  formName,
+  submitButton: { text: submitText, props: submitProps },
+  beforeSubmit,
+  afterSubmit
+}) => {
   class CustomForm extends Component {
     constructor () {
       super()
-      this.styles = {
-        field: { marginBottom: '10px' },
-        input: { marginBottom: '0 !important' },
-        error: { color: CSS.ERROR_COLOR, fontSize: '0.8em' }
-      }
+      this.styles = styles || {}
       this.renderField = getRenderField().bind(this)
       this.fields = fields
+      this.beforeSubmit = beforeSubmit
+      this.afterSubmit = afterSubmit
+    }
+
+    submit () {
+      this.beforeSubmit && this.beforeSubmit()
+      this.props.handleSubmit(...arguments)
+      this.afterSubmit && this.afterSubmit()
     }
 
     render () {
-      const { handleSubmit, styles } = this.props
+      const { styles } = this.props
       return (
-        <form onSubmit={handleSubmit} className={style(styles.form)}>
+        <form onSubmit={this.submit.bind(this)} className={style(styles.form)}>
           {this.fields.map(({ name, validate, ...others }) => {
             const { fieldType = FIELD_NAME.TEXT } = others
             others.fieldType = fieldType
+            others.id = name
             return (
               <div key={name} className={style(this.styles.field)}>
                 <Field
@@ -89,8 +103,8 @@ const createForm = (fields, { formName, buttonProps }) => {
               </div>
             )
           })}
-          <Button {...buttonProps} type='submit'>
-            Submit
+          <Button {...submitProps} type='submit'>
+            {submitText}
           </Button>
         </form>
       )
