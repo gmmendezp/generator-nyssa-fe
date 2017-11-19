@@ -4,7 +4,7 @@ import { style, keyframes } from 'typestyle'
 import { CSS } from 'utils/constants'
 
 class Home extends Component {
-  constructor () {
+  constructor() {
     super()
     this.styles = {
       base: {},
@@ -32,16 +32,14 @@ class Home extends Component {
     }
   }
 
-  render () {
+  render() {
     return (
       <div className={style(this.styles.base)}>
         <div className={style(this.styles.header)}>
-          <img src={logo} className={style(this.styles.logo)} alt='logo' />
+          <img src={logo} className={style(this.styles.logo)} alt="logo" />
           <h2>Welcome to React</h2>
         </div>
-        <p className={style(this.styles.intro)}>
-          Just a home page
-        </p>
+        <p className={style(this.styles.intro)}>Just a home page</p>
       </div>
     )
   }

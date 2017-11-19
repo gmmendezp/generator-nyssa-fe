@@ -17,7 +17,7 @@ cssRule('body', {
   backgroundColor: CSS.BG_COLOR_PRIMARY
 })
 
-function renderApp () {
+function renderApp() {
   let store = configureStore()
   ReactDOM.render(
     <Provider store={store}>
@@ -30,7 +30,6 @@ function renderApp () {
 }
 
 if (!global.Intl) {
-  console.log(1)
   const locale =
     window.navigator.userLanguage || window.navigator.language || 'en-US'
   Promise.all([

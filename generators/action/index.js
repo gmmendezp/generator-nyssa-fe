@@ -2,7 +2,6 @@
 const Generator = require('yeoman-generator')
 const fs = require('fs')
 const readline = require('readline')
-const standard = require('standard')
 
 const fileTemplate = 'actions.js'
 
@@ -62,16 +61,6 @@ module.exports = class extends Generator {
             stream.write(`\n${newData}`)
           }
           stream.end()
-          stream.on('finish', () => {
-            standard.lintFiles(
-              fileName,
-              {
-                fix: true,
-                cwd: this.destinationRoot()
-              },
-              err => (err ? console.error(err) : '')
-            )
-          })
         })
       })
     }

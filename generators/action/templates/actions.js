@@ -1,4 +1,4 @@
-export function <%= name %> () {
+export function <%= name %>() {
   return {
     type: '',
     payload: {}

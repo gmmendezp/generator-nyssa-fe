@@ -25,9 +25,5 @@
   "homepage": "https://gitlab.com/gmmendezp/generator-nyssa-fe#README",
   "dependencies": {
     "yeoman-generator": "^1.1.1"
-  },
-  "devDependencies": {
-    "snazzy": "^7.0.0",
-    "standard": "^10.0.2"
   }
 }

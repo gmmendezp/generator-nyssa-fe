@@ -26,7 +26,7 @@ import Button from 'react-md/lib/Buttons/Button'
  */
 
 const getRenderField = () => {
-  return function ({
+  return function({
     input,
     label,
     fieldType,
@@ -67,7 +67,7 @@ const createForm = ({
   afterSubmit
 }) => {
   class CustomForm extends Component {
-    constructor () {
+    constructor() {
       super()
       this.styles = styles || {}
       this.renderField = getRenderField().bind(this)
@@ -76,13 +76,13 @@ const createForm = ({
       this.afterSubmit = afterSubmit
     }
 
-    submit () {
+    submit() {
       this.beforeSubmit && this.beforeSubmit()
       this.props.handleSubmit(...arguments)
       this.afterSubmit && this.afterSubmit()
     }
 
-    render () {
+    render() {
       const { styles } = this.props
       return (
         <form onSubmit={this.submit.bind(this)} className={style(styles.form)}>
@@ -103,7 +103,7 @@ const createForm = ({
               </div>
             )
           })}
-          <Button {...submitProps} type='submit'>
+          <Button {...submitProps} type="submit">
             {submitText}
           </Button>
         </form>

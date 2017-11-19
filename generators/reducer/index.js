@@ -2,7 +2,6 @@
 const Generator = require('yeoman-generator')
 const fs = require('fs')
 const readline = require('readline')
-const standard = require('standard')
 
 const fileTemplate = 'reducer.js'
 const combineReducersLine = 'const rootReducer = combineReducers({'.replace(
@@ -85,14 +84,6 @@ module.exports = class extends Generator {
         this.fs.copy(
           this.templatePath(fileTemplate),
           this.destinationPath(path)
-        )
-        standard.lintFiles(
-          fileName,
-          {
-            fix: true,
-            cwd: this.destinationRoot()
-          },
-          err => (err ? console.error(err) : '')
         )
       })
     })
