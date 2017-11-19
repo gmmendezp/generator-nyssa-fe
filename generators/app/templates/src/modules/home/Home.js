@@ -1,11 +1,11 @@
-import React, { Component } from 'react'
-import logo from 'assets/logo.svg'
-import { style, keyframes } from 'typestyle'
-import { CSS } from 'utils/constants'
+import React, { Component } from 'react';
+import logo from 'assets/logo.svg';
+import { style, keyframes } from 'typestyle';
+import { CSS } from 'utils/constants';
 
 class Home extends Component {
   constructor() {
-    super()
+    super();
     this.styles = {
       base: {},
       logo: {
@@ -29,7 +29,7 @@ class Home extends Component {
         fontSize: 'large',
         textAlign: 'center'
       }
-    }
+    };
   }
 
   render() {
@@ -41,8 +41,8 @@ class Home extends Component {
         </div>
         <p className={style(this.styles.intro)}>Just a home page</p>
       </div>
-    )
+    );
   }
 }
 
-export default Home
+export default Home;

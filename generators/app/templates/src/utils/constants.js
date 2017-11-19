@@ -1,4 +1,4 @@
-import { color } from 'csx'
+import { color } from 'csx';
 
 export const CSS = {
   BREAKPOINT_SMALL: 480,
@@ -21,8 +21,8 @@ export const CSS = {
   BG_COLOR: '#cff09e',
   ERROR_COLOR: color('#c00').toHexString(),
   WARNING_COLOR: color('#c30').toHexString()
-}
+};
 
 export default {
   CSS
-}
+};

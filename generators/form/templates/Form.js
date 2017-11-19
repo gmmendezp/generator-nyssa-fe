@@ -1,6 +1,6 @@
-import createForm from 'utils/createForm'
-import { FIELD_NAME } from 'utils/form'
-import { checkEmail, required } from 'utils/validators'
+import createForm from 'utils/createForm';
+import { FIELD_NAME } from 'utils/form';
+import { checkEmail, required } from 'utils/validators';
 
 let fields = [
   {
@@ -28,7 +28,7 @@ let fields = [
     fieldType: FIELD_NAME.TEXT,
     validate: [checkEmail()]
   }
-]
+];
 
 let <%= name %> = createForm({
   fields,
@@ -40,6 +40,6 @@ let <%= name %> = createForm({
       raised: true
     }
   }
-})
+});
 
-export default <%= name %>
+export default <%= name %>;

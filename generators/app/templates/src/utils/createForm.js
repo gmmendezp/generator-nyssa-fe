@@ -1,8 +1,8 @@
-import React, { Component } from 'react'
-import { Field, reduxForm } from 'redux-form'
-import { style } from 'typestyle'
-import { FIELD_NAME, FIELD_TYPE, FIELD_COMPONENTS } from './form'
-import Button from 'react-md/lib/Buttons/Button'
+import React, { Component } from 'react';
+import { Field, reduxForm } from 'redux-form';
+import { style } from 'typestyle';
+import { FIELD_NAME, FIELD_TYPE, FIELD_COMPONENTS } from './form';
+import Button from 'react-md/lib/Buttons/Button';
 
 /**
  * Create a form the following way: createForm(options)
@@ -41,22 +41,22 @@ const getRenderField = () => {
         type: fieldType
       },
       other
-    )
+    );
     if (label) {
-      otherProps.label = label
+      otherProps.label = label;
     }
     if (touched && error) {
-      otherProps.errorText = error
-      otherProps.error = true
+      otherProps.errorText = error;
+      otherProps.error = true;
     }
     return (
       <div>
         {FIELD_COMPONENTS[fieldType](input, otherProps)}
         {extra}
       </div>
-    )
-  }
-}
+    );
+  };
+};
 
 const createForm = ({
   fields,
@@ -68,28 +68,28 @@ const createForm = ({
 }) => {
   class CustomForm extends Component {
     constructor() {
-      super()
-      this.styles = styles || {}
-      this.renderField = getRenderField().bind(this)
-      this.fields = fields
-      this.beforeSubmit = beforeSubmit
-      this.afterSubmit = afterSubmit
+      super();
+      this.styles = styles || {};
+      this.renderField = getRenderField().bind(this);
+      this.fields = fields;
+      this.beforeSubmit = beforeSubmit;
+      this.afterSubmit = afterSubmit;
     }
 
     submit() {
-      this.beforeSubmit && this.beforeSubmit()
-      this.props.handleSubmit(...arguments)
-      this.afterSubmit && this.afterSubmit()
+      this.beforeSubmit && this.beforeSubmit();
+      this.props.handleSubmit(...arguments);
+      this.afterSubmit && this.afterSubmit();
     }
 
     render() {
-      const { styles } = this.props
+      const { styles } = this.props;
       return (
         <form onSubmit={this.submit.bind(this)} className={style(styles.form)}>
           {this.fields.map(({ name, validate, ...others }) => {
-            const { fieldType = FIELD_NAME.TEXT } = others
-            others.fieldType = fieldType
-            others.id = name
+            const { fieldType = FIELD_NAME.TEXT } = others;
+            others.fieldType = fieldType;
+            others.id = name;
             return (
               <div key={name} className={style(this.styles.field)}>
                 <Field
@@ -101,23 +101,23 @@ const createForm = ({
                   props={others}
                 />
               </div>
-            )
+            );
           })}
           <Button {...submitProps} type="submit">
             {submitText}
           </Button>
         </form>
-      )
+      );
     }
   }
 
   CustomForm.defaultProps = {
     styles: {}
-  }
+  };
 
   return reduxForm({
     form: formName
-  })(CustomForm)
-}
+  })(CustomForm);
+};
 
-export default createForm
+export default createForm;

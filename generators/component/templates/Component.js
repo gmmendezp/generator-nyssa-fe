@@ -1,13 +1,13 @@
-import React, { Component } from 'react'
-import { style } from 'typestyle'<% if (container){%>
-import { connect } from 'react-redux'<% } %>
+import React, { Component } from 'react';
+import { style } from 'typestyle';<% if (container){%>
+import { connect } from 'react-redux';<% } %>
 
 export class <%= name %> extends Component {
   constructor() {
-    super()
+    super();
     this.styles = {
       base: {}
-    }
+    };
   }
 
   render() {
@@ -15,12 +15,12 @@ export class <%= name %> extends Component {
       <div className={style(this.styles.base, this.props.styles.base)}>
         <%= name %>
       </div>
-    )
+    );
   }
 }
 <% if (container) { %>
 const mapStateToProps = state => {
-  return {}
+  return {};
 }
 
-export default connect(mapStateToProps)(<%= name %>)<% } else {%>export default <%= name %><% }%>
+export default connect(mapStateToProps)(<%= name %>);<% } else {%>export default <%= name %>;<% }%>
