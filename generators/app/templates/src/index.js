@@ -9,6 +9,8 @@ import Router from './router';
 import registerServiceWorker from './registerServiceWorker';
 import configureStore from './configureStore';
 
+import './i18n';
+
 normalize();
 setupPage('#root');
 

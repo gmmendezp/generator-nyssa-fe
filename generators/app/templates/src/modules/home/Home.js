@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
+import { translate } from 'react-i18next';
 import logo from 'assets/logo.svg';
 import { style, keyframes } from 'typestyle';
 import { CSS } from 'utils/constants';
 
-class Home extends Component {
+export class Home extends Component {
   constructor() {
     super();
     this.styles = {
@@ -33,16 +34,19 @@ class Home extends Component {
   }
 
   render() {
+    let { t } = this.props;
     return (
       <div className={style(this.styles.base)}>
         <div className={style(this.styles.header)}>
           <img src={logo} className={style(this.styles.logo)} alt="logo" />
-          <h2>Welcome to React</h2>
+          <h2>{t('title')}</h2>
         </div>
-        <p className={style(this.styles.intro)}>Just a home page</p>
+        <p className={style(this.styles.intro)}>
+          {t('description')}
+        </p>
       </div>
     );
   }
 }
 
-export default Home;
+export default translate('translations')(Home);
